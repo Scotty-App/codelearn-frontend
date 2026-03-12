@@ -2,56 +2,42 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acceder - CodeLearn</title>
+    <title>Login - CodeLearn</title>
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-
     <div class="container">
         <h2>Acceder</h2>
 
-        <div class="formulario">
-            <input type="email" id="email" placeholder="Correo electrónico">
-            <input type="password" id="password" placeholder="Contraseña">
-            <button id="btnLogin">Acceder</button>
-        </div>
+        <input type="email"    id="email"    placeholder="Email">
+        <input type="password" id="password" placeholder="Contraseña">
+        <button id="btnLogin">Entrar</button>
 
-        <p>¿No tienes cuenta? <a href="signup.html">Regístrate</a></p>
+        <p><a href="signup.html">¿No tienes cuenta? Regístrate</a></p>
     </div>
 
     <script>
+        document.getElementById("btnLogin").addEventListener("click", function() {
 
-        const btnLogin = document.getElementById("btnLogin");
-
-        btnLogin.addEventListener("click", function() {
-
-            let emailIntroducido    = document.getElementById("email").value;
-            let passwordIntroducida = document.getElementById("password").value;
+            let email    = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
 
             // Leemos el usuario guardado en localStorage
-            // JSON.parse convierte el texto de vuelta a objeto
-            let usuarioGuardado = JSON.parse(localStorage.getItem("usuario"));
+            let usuario = JSON.parse(localStorage.getItem("usuario"));
 
-            // Comprobamos que existe un usuario registrado
-            if (usuarioGuardado === null) {
-                alert("No hay ningún usuario registrado. Regístrate primero.");
+            if (usuario === null) {
+                alert("No hay ningún usuario registrado.");
                 return;
             }
 
-            // Comparamos email y contraseña con los guardados en el signup
-            if (emailIntroducido === usuarioGuardado.email &&
-                passwordIntroducida === usuarioGuardado.password) {
-
-                alert("¡Bienvenido, " + usuarioGuardado.nombre + "!");
+            // Comparamos con los datos del registro
+            if (email === usuario.email && password === usuario.password) {
+                alert("Bienvenido, " + usuario.nombre + "!");
                 window.location.href = "app.html";
-
             } else {
                 alert("Email o contraseña incorrectos.");
             }
         });
-
     </script>
-
 </body>
 </html>
