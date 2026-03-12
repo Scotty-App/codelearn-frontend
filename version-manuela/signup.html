@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro - CodeLearn</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Crear cuenta</h2>
+
+        <input type="text"     id="nombre"          placeholder="Nombre">
+        <input type="text"     id="apellidos"        placeholder="Apellidos">
+        <input type="text"     id="alias"            placeholder="Alias">
+        <input type="email"    id="email"            placeholder="Email">
+        <input type="password" id="password"         placeholder="Contraseña">
+        <input type="password" id="passwordConfirm"  placeholder="Confirmar contraseña">
+        <input type="date"     id="fechaNacimiento">
+
+        <select id="perfil">
+            <option value="">-- Perfil --</option>
+            <option value="estudiante">Estudiante</option>
+            <option value="profesor">Profesor</option>
+        </select>
+
+        <select id="centro">
+            <option value="">-- Centro educativo --</option>
+            <option value="ies_mutxamel">IES Mutxamel</option>
+            <option value="otros">Otros</option>
+        </select>
+
+        <button id="btnRegistrar">Registrarme</button>
+        <p><a href="login.html">Ya tengo cuenta</a></p>
+    </div>
+
+    <script>
+        document.getElementById("btnRegistrar").addEventListener("click", function() {
+
+            let nombre         = document.getElementById("nombre").value;
+            let apellidos      = document.getElementById("apellidos").value;
+            let alias          = document.getElementById("alias").value;
+            let email          = document.getElementById("email").value;
+            let password       = document.getElementById("password").value;
+            let passwordConfirm= document.getElementById("passwordConfirm").value;
+            let fechaNacimiento= document.getElementById("fechaNacimiento").value;
+            let perfil         = document.getElementById("perfil").value;
+            let centro         = document.getElementById("centro").value;
+
+            // Comprobamos que no hay campos vacíos
+            if (nombre === "" || apellidos === "" || alias === "" || email === "" ||
+                password === "" || passwordConfirm === "" || fechaNacimiento === "" ||
+                perfil === "" || centro === "") {
+                alert("Rellena todos los campos.");
+                return;
+            }
+
+            // Comprobamos que las contraseñas coinciden
+            if (password !== passwordConfirm) {
+                alert("Las contraseñas no coinciden.");
+                return;
+            }
+
+            // Guardamos los datos en localStorage como objeto
+            let usuario = {
+                nombre: nombre,
+                apellidos: apellidos,
+                alias: alias,
+                email: email,
+                password: password,
+                fechaNacimiento: fechaNacimiento,
+                perfil: perfil,
+                centro: centro
+            };
+
+            localStorage.setItem("usuario", JSON.stringify(usuario));
+
+            alert("Registro completado. Email de confirmación enviado a: " + email);
+            window.location.href = "login.html";
+        });
+    </script>
+</body>
+</html>

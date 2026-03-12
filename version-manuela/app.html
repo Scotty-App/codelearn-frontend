@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>App - CodeLearn</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <div class="container">
+        <h2 id="saludo">¡Hola! ¿Qué deseas aprender?</h2>
+
+        <button class="btn-lenguaje">Python</button>
+        <button class="btn-lenguaje">HTML</button>
+        <button class="btn-lenguaje">CSS</button>
+        <button class="btn-lenguaje">JavaScript</button>
+        <button class="btn-lenguaje">Java</button>
+        <button class="btn-lenguaje">SQL</button>
+        <button class="btn-lenguaje">C++</button>
+        <button class="btn-lenguaje">C</button>
+        <button class="btn-lenguaje">PHP</button>
+
+        <br><br>
+        <button onclick="window.location.href='index.html'">Volver al inicio</button>
+    </div>
+
+    <script>
+        // Si hay usuario logueado mostramos su nombre
+        let usuario = JSON.parse(localStorage.getItem("usuario"));
+
+        if (usuario !== null) {
+            document.getElementById("saludo").textContent =
+                "¡Hola, " + usuario.nombre + "! ¿Qué deseas aprender?";
+        }
+
+        // Evento para todos los botones de lenguaje
+        let botones = document.querySelectorAll(".btn-lenguaje");
+
+        botones.forEach(function(boton) {
+            boton.addEventListener("click", function() {
+                alert("Has seleccionado: " + boton.textContent);
+            });
+        });
+    </script>
+</body>
+</html>

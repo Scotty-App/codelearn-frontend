@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: lightblue;
+    margin-top: 50px;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+input, select {
+    display: block;
+    margin: 10px auto;
+    padding: 8px;
+    font-size: 15px;
+    width: 250px;
+}
+
+button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 15px;
+    background-color: #1DA1F2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0d8bdb;
+}
